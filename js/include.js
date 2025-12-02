@@ -1,21 +1,24 @@
 // Load Navbar
 
-// Detect base URL otomatis untuk GitHub Pages
-const BASE = window.location.pathname.replace(/\/[^/]*$/, "");
+// Detect base path for GitHub Pages
+const repoName = "/tesya-makeup-artist";
 
 // Load Navbar
-fetch(`${BASE}/navbar.html`)
+fetch(`${repoName}/navbar.html`)
     .then(res => res.text())
     .then(data => {
-        document.getElementById("navbar-placeholder").innerHTML = data;
+        const el = document.getElementById("navbar-placeholder");
+        if (el) el.innerHTML = data;
     });
 
 // Load Footer
-fetch(`${BASE}/footer.html`)
+fetch(`${repoName}/footer.html`)
     .then(res => res.text())
     .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
+        const el = document.getElementById("footer-placeholder");
+        if (el) el.innerHTML = data;
     });
+
 
 
 // fetch("/components/navbar.html")
