@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tesya Indriani — Make Up Artist</title>
+
+    <!-- Favicon standar -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/tesya.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/tesya.png">
+
+    <!-- (Opsional) untuk device Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/tesya.png">
+    <!-- (Opsional) untuk browser lama -->
+    <link rel="shortcut icon" href="img/tesya.png">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --pink-1: #ffbfd2;
+            --pink-2: #ff7aa2;
+            --accent: #ff4d7a;
+            --muted: #6b6b6b;
+        }
+
+        body {
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: #222;
+            background: linear-gradient(180deg, #fff 0%, #fffafc 100%);
+        }
+
+        .hero {
+            background: linear-gradient(90deg, var(--pink-1), rgba(255, 255, 255, 0.4));
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 8px 30px rgba(255, 122, 162, 0.08);
+        }
+
+        .btn-pink {
+            background: var(--accent);
+            color: #fff;
+            border-radius: 10px;
+            padding: .55rem 1rem;
+            box-shadow: 0 6px 18px rgba(255, 77, 122, 0.15);
+            border: none;
+        }
+
+        .btn-pink:hover {
+            background: #e63c6a;
+            color: #fff;
+        }
+
+        .service-card {
+            border-radius: 14px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 18px;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform .25s ease, filter .25s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.04);
+            filter: brightness(92%);
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            padding: 24px 0;
+            margin-top: 40px;
+        }
+
+        @media(min-width:992px) {
+            .gallery img {
+                height: 260px;
+            }
+        }
+
+
+        .nav-clean {
+            color: #333 !important;
+            font-size: 1rem;
+            padding-bottom: 3px;
+            position: relative;
+            transition: 0.25s ease;
+        }
+
+        .nav-clean:hover {
+            color: #ff4d7a !important;
+        }
+
+        .nav-clean::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #ff4d7a;
+            position: absolute;
+            left: 50%;
+            bottom: -3px;
+            transform: translateX(-50%);
+            transition: width 0.25s ease;
+        }
+
+        .nav-clean:hover::after {
+            width: 60%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            /* sudah ada */
+            scroll-padding-top: 150px;
+            /* sesuaikan dengan tinggi navbar */
+        }
+
+
+        .navbar-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+            padding: 12px 0;
+        }
+
+        @media (min-width: 992px) {
+            .hero {
+                padding-right: 0 !important;
+                /* hilangkan space kanan */
+                padding-top: 0 !important;
+                /* opsional: hilangkan space atas */
+                padding-bottom: 0 !important;
+                /* hilangkan space bawah */
+            }
+
+            .hero-img-col {
+                width: 50%;
+                height: 100%;
+                padding: 0 !important;
+                /* pastikan tidak ada padding */
+                margin: 0 !important;
+                overflow: hidden;
+                /* rapikan crop */
+            }
+
+            .hero-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* gambar full kolom */
+                border-radius: 0 16px 16px 0;
+                /* opsional */
+            }
+        }
+
+        /* --- MOBILE HERO IMAGE --- */
+        @media (max-width: 991px) {
+            .hero {
+                padding: 0 !important;
+                border-radius: 16px;
+                /* tetap ada rounded */
+            }
+
+            .hero-img-col {
+                width: 100% !important;
+                height: auto;
+                overflow: hidden;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .hero-img {
+                width: 100%;
+                height: 430px;
+                /* bisa ubah: 250–350px */
+                object-fit: cover;
+                border-radius: 16px 16px 0 0 !important;
+                display: block;
+                margin: 0;
+                padding: 0;
+            }
+
+            /* Teks diberi padding agar tidak mepet */
+            .hero .flex-fill {
+                padding: 24px;
+                /* jarak nyaman */
+            }
+        }
+
+        /* SLIDER TESTIMONI */
+        .testi-wrapper {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: .5rem;
+            cursor: grab;
+            scrollbar-width: none;
+        }
+
+        .testi-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testi-card {
+            flex: 0 0 85%;
+            min-width: 260px;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 18px 20px;
+            scroll-snap-align: start;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+        }
+
+        .testi-name {
+            font-weight: 600;
+            font-size: .9rem;
+        }
+
+        .testi-role {
+            font-size: .8rem;
+            color: #888;
+        }
+
+        .testi-wrapper.grabbing {
+            cursor: grabbing;
+        }
+
+        @media (min-width: 768px) {
+            .testi-card {
+                flex: 0 0 calc((100% - 2rem) / 3);
+            }
+        }
+
+
+        .expert-icon {
+            width: 70px;
+            height: 70px;
+            /* border: 2px solid #333; */
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: #333;
+        }
+
+
+        /* ===== Expertise Slider ===== */
+        .expert-wrapper {
+            display: flex;
+            gap: 1.2rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: .5rem 0 1rem;
+            scrollbar-width: none;
+            cursor: grab;
+        }
+
+        .expert-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .expert-card {
+            flex: 0 0 85%;
+            min-width: 260px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 22px;
+            border: 1px solid rgba(0, 0, 0, 0.07);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            scroll-snap-align: start;
+            transition: transform .25s ease;
+        }
+
+        .expert-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .expert-icon {
+            font-size: 38px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .expert-card {
+                flex: 0 0 calc((100% - 3rem) / 3);
+            }
+        }
+
+        .expert-wrapper.grabbing {
+            cursor: grabbing;
+        }
+
+        /* CARD LAYANAN MIRIP CONTOH GAMBAR */
+        .service-img-card {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            /* Tinggi gambar */
+            overflow: hidden;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .service-img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* supaya proporsional seperti contoh */
+            transition: transform .4s ease;
+        }
+
+        /* Zoom smooth saat hover */
+        .service-img-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* LABEL */
+        .service-img-label {
+            position: absolute;
+            bottom: 18px;
+            left: 22px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* Mobile – agar tetap rapi */
+        @media (max-width: 576px) {
+            .service-img-card {
+                height: 220px;
+            }
+
+            .service-img-label {
+                font-size: 1rem;
+                left: 18px;
+                bottom: 16px;
+            }
+        }
+
+        /* FAQ Layout with Image */
+        .faq-container {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .faq-image {
+            width: 38%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 991px) {
+            .faq-container {
+                flex-direction: column;
+            }
+
+            .faq-image {
+                width: 100%;
+            }
+        }
+
+        /* FAQ Items */
+        .faq-item {
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            background: #fff;
+            padding: 16px 18px;
+            transition: .25s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Question Row */
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .faq-question i {
+            font-size: 1.2rem;
+            transition: transform .35s ease;
+        }
+
+        /* Rotate arrow when open */
+        .faq-item.show i {
+            transform: rotate(180deg);
+        }
+
+        /* Smooth Animation */
+        .faq-answer {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height .45s ease, opacity .35s ease;
+            color: #555;
+            line-height: 1.6;
+            padding-top: 0;
+        }
+
+        /* When Open */
+        .faq-answer.open {
+            max-height: 300px;
+            opacity: 1;
+            padding-top: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <section id="home" class="my-5"></section>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top"
+        style="background:#ffffff; border-bottom:1px solid rgba(0,0,0,0.06); padding:12px 0; z-index:999;">
+    
+        <div class="container d-flex justify-content-center align-items-center">
+    
+            <!-- LOGO + MENU DALAM SATU BARIS -->
+            <a class="navbar-brand me-4" href="index.html">
+                <img src="img/logo.png" alt="Tesya Logo" width="200" height="70" class="img-fluid"
+                    style="object-fit:contain;margin-left: 75%;">
+            </a>
+    
+            <!-- TOGGLER (HP) -->
+            <button class="navbar-toggler ms-auto border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navMenu">
+                <span>
+                    <svg width="28" height="28" viewBox="0 0 16 16" fill="#5a2d2d">
+                        <path d="M2 4h12v1.5H2zM2 7.5h12v1.5H2zM2 11h12v1.5H2z"></path>
+                    </svg>
+                </span>
+            </button>
+    
+            <!-- MENU (Center) -->
+            <div class="collapse navbar-collapse justify-content-center" id="navMenu">
+    
+                <ul class="navbar-nav align-items-center" style="gap: 38px;">
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="index.html">Home</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="#about">Tentang</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="#services">Layanan</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="#testimonials">Testimonial</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="#faq">Faq</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link nav-clean fw-medium" href="#contact">Kontak</a>
+                    </li>
+    
+                </ul>
+            </div>
+    
+        </div>
+    </nav>
+    <!-- NAVBAR -->
+     
+
+    <!-- HERO SECTION -->
+    <header class="container mt-4 mb-4">
+        <div class="hero d-flex flex-column flex-lg-row gap-4 align-items-center">
+            <div class="flex-fill order-2 order-lg-1">
+                <h1 class="fw-semibold mb-1" style="font-size: 3rem;">
+                    Tesya MUA
+                </h1>
+                <h4 class="fw-semibold mb-1">
+                    Jasa Makeup Artis – MUA Majene
+                </h4>
+
+                <p class="mb-4" style="color:#555; line-height:1.7;">
+                    Sedang mencari Jasa MUA profesional di Majene dan sekitarnya?
+                    Tesya MUA menyediakan layanan makeup untuk Wedding, Prewedding,
+                    Photoshoot, Wisuda, Event, dan berbagai acara lainnya.
+                    Dapatkan hasil makeup natural hingga glam, tahan lama,
+                    dan sesuai karakter wajah Anda.
+                </p>
+
+                <div class="mb-3 d-flex flex-column flex-sm-row gap-3">
+                    <a target="_blank"
+                        href="https://wa.me/6285333860295?text=Halo%20Kak%20Tesya,%20saya%20ingin%20booking%20makeup"
+                        class="btn btn-pink me-2"> Booking via WhatsApp</a>
+
+                    <a href="https://instagram.com/tesyamakeup_new" target="_blank"
+                        class="btn btn-pink me-2  text-decoration-none"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Instagram_white.svg/1024px-Instagram_white.svg.png"
+                            width="20" class="me-2">@tesyamakeup_new</a>
+
+                </div>
+
+                <div class="row row-cols-1 row-cols-sm-3 g-2 mt-3">
+                    <div class="col"><small class="text-muted">Pengalaman</small>
+                        <div class="fw-bold">4+ tahun</div>
+                    </div>
+                    <div class="col"><small class="text-muted">Jenis Layanan</small>
+                        <div class="fw-bold">Wedding, Photoshoot</div>
+                    </div>
+                    <div class="col"><small class="text-muted">Area</small>
+                        <div class="fw-bold">Majene / Sekitar</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="order-1 order-lg-2 hero-img-col">
+                <img src="gambar/profil.jpeg" alt="Tesya Indriani" class="hero-img">
+            </div>
+
+        </div>
+    </header>
+
+
+
+    <main class="container">
+        <section id="about" class="my-5">
+            <!-- ABOUT -->
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="fw-semibold">Tentang Saya</h3>
+                    <p style="color:var(--muted)">
+                        Saya Tesya Indriani, seorang Make Up Artist (MUA) dengan pengalaman lebih dari 4 tahun.
+                        Lulusan SMK Negeri 1 Majene jurusan Tata Kecantikan, dan saat ini melanjutkan pendidikan
+                        di Universitas Sulawesi Barat — Prodi Pendidikan Teknologi Informasi.
+                    </p>
+                    <p style="color:var(--muted)">
+                        Saya mengerjakan berbagai jenis makeup: bridal, glam, soft Korean, photoshoot editorial,
+                        hingga karakter. Bagi saya, makeup adalah seni yang membantu seseorang tampil lebih percaya
+                        diri.
+                    </p>
+
+                    <ul class="list-unstyled">
+                        <li><strong>Keahlian:</strong> Bridal, Soft Glam, Editorial, Character Makeup</li>
+                        <li><strong>Tools:</strong> MAC, Make Over, Anastasia, dll</li>
+                        <li><strong>Pelayanan:</strong> On-location & Studio</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="service-card">
+                                <h6>Wedding Makeup</h6>
+                                <p class="small text-muted mb-0">Natural hingga glam bridal look.</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="service-card">
+                                <h6>Photoshoot</h6>
+                                <p class="small text-muted mb-0">Editorial & commercial makeup.</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="service-card">
+                                <h6>Wisuda & Event</h6>
+                                <p class="small text-muted mb-0">Look fotogenik tahan lama.</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="service-card">
+                                <h6>Character Makeup</h6>
+                                <p class="small text-muted mb-0">Makeup kostum & theatrical.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="my-5">
+            <h4 class="fw-semibold mb-3">Layanan Kami</h4>
+
+            <div class="row g-3">
+
+                <!-- Bridal -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-bridal-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/gambar pengantin.jpeg">
+                            <div class="service-img-label">Bridal Makeup</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Photoshoot -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-photoshoot-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/Photoshot/gambar17.JPG">
+                            <div class="service-img-label">Makeup Photoshoot</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Wedding & Prewedding -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-weeding-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/Wedding/gambar2.JPG">
+                            <div class="service-img-label">Wedding & Prewedding</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Wisuda -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-wisuda-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/Wisuda/gambar2.jpeg">
+                            <div class="service-img-label">Makeup Wisuda</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Event -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-event-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/Event/b2a53043-7a42-4dd4-b022-24b4333f898f.JPG">
+                            <div class="service-img-label">Makeup Event</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Fantasy / Character -->
+                <div class="col-sm-6 col-md-4">
+                    <a href="layanan-karakter-makeup.html" class="text-decoration-none">
+                        <div class="service-img-card">
+                            <img src="gambar/Karakter/gambar5.JPG">
+                            <div class="service-img-label">Makeup Fantasy / Character</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <!-- EXPERTISE -->
+        <section id="expertise" class="my-5">
+            <h4 class="fw-semibold mb-4">Keunggulan Layanan</h4>
+
+            <div class="row g-4">
+
+                <!-- 1 — Home Services -->
+                <div class="col-md-6 d-flex align-items-start gap-3 service-card">
+                    <div class="expert-icon">
+                        <i class="bi bi-house-door"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Home Services</h5>
+                        <p class="text-muted mb-0">
+                            Layanan makeup datang ke lokasi kamu.
+                            Memudahkan kamu mendapatkan service MUA terbaik tanpa harus keluar rumah.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2 — Quick Response -->
+                <div class="col-md-6 d-flex align-items-start gap-3 service-card">
+                    <div class="expert-icon">
+                        <i class="bi bi-hourglass-split"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Quick Response</h5>
+                        <p class="text-muted mb-0">
+                            Respon cepat & profesional.
+                            Mengutamakan ketepatan waktu agar kamu tidak melewatkan momen berharga.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 3 — Makeup Artist Everywhere -->
+                <!-- 3 — Area Layanan Majene -->
+                <div class="col-md-6 d-flex align-items-start gap-3 service-card">
+                    <div class="expert-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Area Layanan Majene</h5>
+                        <p class="text-muted mb-0">
+                            Melayani makeup di Majene dan area sekitarnya.
+                            Tersedia untuk panggilan ke lokasi sesuai kebutuhan acara.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- 4 — Professional Quality -->
+                <div class="col-md-6 d-flex align-items-start gap-3 service-card">
+                    <div class="expert-icon">
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-semibold mb-1">Professional Quality</h5>
+                        <p class="text-muted mb-0">
+                            Menggunakan produk premium & teknik profesional
+                            untuk hasil makeup yang tahan lama dan flawless.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="testimonials" class="my-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="fw-semibold mb-3">Testimoni</h4>
+            </div>
+
+            <div class="testi-wrapper" id="testiWrapper">
+                <!-- 1 -->
+                <div class="testi-card">
+                    <p class="mb-2">"Riasannya natural dan tahan lama, banyak yang memuji di hari H!"</p>
+                    <div class="testi-name">Ayu</div>
+                    <div class="testi-role">Pengantin</div>
+                </div>
+
+                <!-- 2 -->
+                <div class="testi-card">
+                    <p class="mb-2">"Makeup photoshootnya detail dan sangat menyatu dengan konsep pemotretan."</p>
+                    <div class="testi-name">Fajar</div>
+                    <div class="testi-role">Fotografer</div>
+                </div>
+
+                <!-- 3 -->
+                <div class="testi-card">
+                    <p class="mb-2">"Makeup wisuda-nya lembut tapi tetap kelihatan di foto, suka banget hasilnya."</p>
+                    <div class="testi-name">Nia</div>
+                    <div class="testi-role">Wisudawati</div>
+                </div>
+
+                <!-- 4 -->
+                <div class="testi-card">
+                    <p class="mb-2">"Tesya sangat ramah, bantu pilih look yang cocok sama bentuk wajah saya."</p>
+                    <div class="testi-name">Rina</div>
+                    <div class="testi-role">Bridesmaid</div>
+                </div>
+
+                <!-- 5 -->
+                <div class="testi-card">
+                    <p class="mb-2">"Client saya puas karena hasil makeup-nya rapi dan tidak mudah luntur."</p>
+                    <div class="testi-name">Dimas</div>
+                    <div class="testi-role">Event Organizer</div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="faq" class="my-5">
+            <h4 class="fw-semibold mb-4">FAQ — Pertanyaan yang Sering Ditanyakan</h4>
+
+            <div class="faq-container">
+
+                <!-- Left Image -->
+                <img class="faq-image" src="https://www.chinitehomecare.com/wp-content/uploads/2025/05/faqs-1-1.png"
+                    alt="FAQ Image">
+
+                <!-- Right FAQ -->
+                <div class="faq-list flex-fill">
+
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Berapa harga makeup?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Harga berbeda sesuai layanan: bridal, wisuda, event, atau photoshoot.
+                            Pricelist lengkap bisa kamu dapatkan langsung via WhatsApp.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Apakah melayani panggilan ke rumah?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Ya, saya melayani home service untuk area Majene dan sekitarnya.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Makeup-nya tahan lama tidak?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Tahan lama! Menggunakan produk premium & teknik long-lasting
+                            sehingga tetap flawless hingga acara selesai.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Bisa request style makeup tertentu?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Tentu, kamu bisa request look natural, soft glam, bold, atau sesuai referensi foto.
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Harus booking berapa hari sebelum acara?
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Bridal & event besar: minimal 1–2 bulan sebelum acara.
+                            Wisuda & photoshoot: H-3 sampai H-7 hari.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- CONTACT -->
+        <section id="contact" class="my-5">
+            <h4 class="fw-semibold mb-3">Kontak & Booking</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="small text-muted">Hubungi untuk booking dan konsultasi:</p>
+                    <ul class="list-unstyled contact-link">
+                        <li>
+                            <strong>WhatsApp:</strong>
+                            <a href="https://wa.me/6285333860295" target="_blank">+62 853-3386-0295</a>
+                        </li>
+
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:tesyahilal@gmail.com">tesyahilal@gmail.com</a>
+                        </li>
+
+                        <li>
+                            <strong>Instagram:</strong>
+                            <a href="https://instagram.com/tesyamakeup_new" target="_blank">@tesyamakeup_new</a>
+                        </li>
+
+                        <li>
+                            <strong>Domisili:</strong> Majene, Sulawesi Barat
+                        </li>
+                    </ul>
+
+                    <p class="small text-muted">Pricelist & jadwal tersedia melalui WhatsApp.</p>
+                </div>
+
+                <div class="col-md-6">
+                    <form id="waForm">
+                        <div class="mb-2">
+                            <input id="nama" class="form-control" placeholder="Nama">
+                        </div>
+
+                        <div class="mb-2">
+                            <input id="layanan" class="form-control"
+                                placeholder="Tipe Layanan (Bridal, Photoshoot, dsb)">
+                        </div>
+
+                        <div class="mb-2">
+                            <textarea id="pesan" class="form-control" rows="3" placeholder="Pesan / tanggal"></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-pink w-100" onclick="kirimWA()">
+                            Kirim via WhatsApp
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer-placeholder"></div>
+    <!-- FOOTER -->
+   
+
+    <script>
+        function kirimWA() {
+            const nama = document.getElementById("nama").value.trim();
+            const layanan = document.getElementById("layanan").value.trim();
+            const pesan = document.getElementById("pesan").value.trim();
+
+            if (!nama || !layanan || !pesan) {
+                alert("Harap isi semua kolom sebelum mengirim pesan.");
+                return;
+            }
+
+            const nomor = "6285333860295";
+
+            const text =
+                `Halo Kak Tesya, saya ingin booking makeup.
+    
+    Nama: ${nama}
+    Layanan: ${layanan}
+    Pesan/Tanggal: ${pesan}
+    
+    Terima kasih 🙏`;
+
+            const encoded = encodeURIComponent(text);
+
+            const url = `https://wa.me/${nomor}?text=${encoded}`;
+
+            window.open(url, "_blank");
+        }
+    </script>
+
+
+    <script>
+        const slider = document.getElementById("testiWrapper");
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let autoSlideInterval = null;
+
+        // ————— DRAG FUNCTION —————
+        slider.addEventListener("mousedown", (e) => {
+            isDown = true;
+            slider.classList.add("grabbing");
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            stopAutoSlide();
+        });
+
+        slider.addEventListener("mouseleave", () => {
+            isDown = false;
+            slider.classList.remove("grabbing");
+            startAutoSlide();
+        });
+
+        slider.addEventListener("mouseup", () => {
+            isDown = false;
+            slider.classList.remove("grabbing");
+            startAutoSlide();
+        });
+
+        slider.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = x - startX;
+            slider.scrollLeft = scrollLeft - walk;
+        });
+
+        // ————— AUTO SLIDE (SLOW) —————
+        function startAutoSlide() {
+            stopAutoSlide();
+
+            autoSlideInterval = setInterval(() => {
+                const card = slider.querySelector(".testi-card");
+                if (!card) return;
+
+                const step = card.offsetWidth + 16; // 16 = gap
+
+                let next = slider.scrollLeft + step;
+
+                const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+                // Jika sudah habis, kembali ke awal
+                if (next >= maxScroll - 10) next = 0;
+
+                slider.scrollTo({
+                    left: next,
+                    behavior: "smooth"
+                });
+
+            }, 4500); // auto-slide tiap 4.5 detik (lebih pelan)
+        }
+
+        function stopAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+        }
+
+        // ————— HENTIKAN SAAT HOVER —————
+        slider.addEventListener("mouseenter", stopAutoSlide);
+        slider.addEventListener("mouseleave", startAutoSlide);
+
+        // ————— RUN AUTO SLIDE —————
+        window.addEventListener("load", startAutoSlide);
+    </script>
+
+    <script>
+        const slider2 = document.getElementById("expertSlider");
+        let isDown2 = false;
+        let startX2;
+        let scrollLeft2;
+        let expertInterval;
+
+        /* Drag Handler */
+        slider2.addEventListener("mousedown", e => {
+            isDown2 = true;
+            slider2.classList.add("grabbing");
+            startX2 = e.pageX - slider2.offsetLeft;
+            scrollLeft2 = slider2.scrollLeft;
+            stopExpertSlide();
+        });
+
+        slider2.addEventListener("mouseleave", () => {
+            isDown2 = false;
+            slider2.classList.remove("grabbing");
+            startExpertSlide();
+        });
+
+        slider2.addEventListener("mouseup", () => {
+            isDown2 = false;
+            slider2.classList.remove("grabbing");
+            startExpertSlide();
+        });
+
+        slider2.addEventListener("mousemove", e => {
+            if (!isDown2) return;
+            e.preventDefault();
+            const x = e.pageX - slider2.offsetLeft;
+            const walk = x - startX2;
+            slider2.scrollLeft = scrollLeft2 - walk;
+        });
+
+        /* Auto Slide */
+        function startExpertSlide() {
+            stopExpertSlide();
+            expertInterval = setInterval(() => {
+                const card = slider2.querySelector(".expert-card");
+                if (!card) return;
+
+                const step = card.offsetWidth + 16;
+                let next = slider2.scrollLeft + step;
+
+                const maxScroll = slider2.scrollWidth - slider2.clientWidth;
+                if (next >= maxScroll - 10) next = 0;
+
+                slider2.scrollTo({ left: next, behavior: "smooth" });
+
+            }, 4800);
+        }
+
+        function stopExpertSlide() {
+            if (expertInterval) clearInterval(expertInterval);
+        }
+
+        slider2.addEventListener("mouseenter", stopExpertSlide);
+        slider2.addEventListener("mouseleave", startExpertSlide);
+
+        window.addEventListener("load", startExpertSlide);
+    </script>
+    <script>
+        document.querySelectorAll(".faq-question").forEach((btn) => {
+            btn.addEventListener("click", () => {
+
+                const parent = btn.parentElement;
+                const answer = parent.querySelector(".faq-answer");
+
+                // toggle class show (for arrow rotation)
+                parent.classList.toggle("show");
+
+                // smooth toggle
+                answer.classList.toggle("open");
+            });
+        });
+    </script>
+
+<script src="js/include.js"></script>
+</body>
+
+</html>

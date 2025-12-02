@@ -1,0 +1,185 @@
+/* ==== GAYA DASAR ==== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ==== HEADER ==== */
+header {
+  background: #00796b;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 26px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* ==== SECTION UMUM ==== */
+section {
+  background: white;
+  margin-top: 20px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+h2 {
+  color: #00695c;
+  border-bottom: 3px solid #00796b;
+  padding-bottom: 6px;
+  margin-bottom: 15px;
+}
+
+ol, ul {
+  margin-left: 20px;
+  line-height: 1.8;
+}
+
+/* ==== AKORDION ==== */
+.accordion {
+  background-color: #f2f2f2; /* warna abu lembut */
+  color: #000000; /* teks hitam */
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  border-radius: 8px;
+  margin-top: 15px;
+  transition: 0.3s;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.accordion:hover {
+  background-color: #e0f2f1; /* hijau muda saat hover */
+}
+
+.panel {
+  padding: 20px;
+  display: none;
+  background-color: #fafafa;
+  border-left: 4px solid #00796b;
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+  color: #333; /* isi panel tetap abu gelap */
+}
+
+
+/* ==== BAGIAN BUKU ==== */
+.buku-section {
+  background: #f1f8e9;
+  border-left: 6px solid #7cb342;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.buku-section a {
+  color: #2e7d32;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.buku-section a:hover {
+  color: #1b5e20;
+  text-decoration: underline;
+}
+
+/* ==== KONTEN VIDEO ==== */
+.visual-content {
+  background: #ffffff;
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.visual-content h3 {
+  color: #004d40;
+  margin-bottom: 10px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.video-container iframe {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 700px;
+  height: 400px;
+}
+
+.image-content img {
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* ==== QUIZ ==== */
+.quiz-section {
+  text-align: center;
+  margin: 50px 0;
+  padding: 30px;
+  background: #f0f4c3;
+  border-radius: 12px;
+  border-left: 6px solid #cddc39;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.quiz-section h3 {
+  color: #827717;
+  margin-bottom: 15px;
+}
+
+.quiz-button {
+  display: inline-block;
+  background-color: #f9a825;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.quiz-button:hover {
+  background-color: #f57f17;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .video-container iframe {
+    width: 100%;
+    height: 250px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .accordion {
+    font-size: 15px;
+  }
+}
